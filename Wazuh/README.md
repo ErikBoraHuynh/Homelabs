@@ -3,8 +3,11 @@
 ## Objective
 
 - **Deploy and configure a Wazuh SIEM** on an **Ubuntu VM** to monitor host activity.
+  
 - **Register a Windows host as an agent** to enable centralized event collection and monitoring.
+  
 - **Implement File Integrity Monitoring (FIM)** to detect and alert on unauthorized file changes within the Windows system.
+  
 - **Understand** how the concepts of **endpoint telemetry, rule-based detection, and alert correlation** work in a real-world environment.
 
 ### Skills Learned
@@ -24,6 +27,16 @@
 - Wazuh
 
 ## Findings
+
+- **Agent-to-manager communication was functioning correctly**, as all file events were reflected on the server in real time.
+
+- **FIM rules were correctly configured**, detecting file creation, deletion, and modification events without additional tuning.
+
+- **Wazuh’s alerting pipeline worked end-to-end**, from local agent monitoring → rule evaluation → event forwarding → dashboard visualization.
+
+- **Log metadata provided valuable context**, such as file paths, event types, and timestamps—similar to what security analysts review during investigations.
+
+- **Wazuh can serve as an effective SIEM for endpoint monitoring**, especially for small environments or homelabs aiming to understand detection mechanics.
 
 <img width="1277" height="797" alt="0 9" src="https://github.com/user-attachments/assets/cf26bc80-bb2f-4cb3-9aff-e7e417c0f7b5" />
 
