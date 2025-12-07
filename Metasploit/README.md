@@ -4,9 +4,9 @@
 
 - **Build a controlled offensive security lab to simulate a complete malware attack chain**, including reconnaissance, payload generation, delivery, execution, and post-exploitation, using Metasploit and a Windows 10 victim machine.
 
-- **Demonstrated how attackers gain remote access through reverse shells and insecure configurations** such as open ports or disabled protections.
+- **Demonstrate how attackers gain remote access through reverse shells and insecure configurations** such as open ports or disabled protections.
 
-- **Strengthened understanding of real-world red team tactics** by performing an end-to-end exploitation workflow inside a safe, isolated environment.
+- **Strengthen understanding of real-world red team tactics** by performing an end-to-end exploitation workflow inside a safe, isolated environment.
 
 ### Skills Learned
 
@@ -25,11 +25,15 @@
 
 ## Findings
 
-- **Process monitoring is critical**, as the malicious file appeared as a background process that could easily be overlooked without tools like Task Manager or EDR visibility.
+- **Endpoint security controls are essential for preventing compromise**, demonstrated when disabling Windows Defender allowed the Trojan executable to run, establish persistence, and create a remote Meterpreter session without any resistance.
+
+- **User behavior remains one of the most critical security factors**, as downloading a file disguised as “Resume.pdf.exe” was enough to initiate a full compromise. This reinforces the importance of ongoing user-security training, phishing awareness, and careful inspection of downloaded files.
 
 - **Once initial access is gained, post-exploitation becomes far more dangerous**, with simple built-in commands exposing user accounts, groups, and network information that can support privilege escalation.
 
 - **The lab demonstrated how quickly attackers can blend into normal system behavior**, reinforcing the need for strong logging, endpoint monitoring, and restrictive network policies.
+
+- **Process monitoring is critical**, as the malicious file appeared as a background process that could easily be overlooked without tools like Task Manager or EDR visibility.
 
 ***
 
