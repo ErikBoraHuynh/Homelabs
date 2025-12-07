@@ -242,11 +242,11 @@ I created and configured my Windows 10 Client VM to only use an Internal Network
 
 When I created the Windows 10 Client VM and configured its adapter to Internal Network, it entered the same Internal Network as our Windows 2019 Server VM / Domain Controller. Since I installed and configured Active Directory Domain Services, DHCP Server, DNS Server, and Remote Access, our Windows 10 Client VM was able to automatically reach out to our Windows 2019 Server VM to request and obtain a unique IP address.
 
-I entered `ipconfig` to verify that our Windows 10 Client VM has obtained a unique IP address successfully.
+Entered `ipconfig` to verify that our Windows 10 Client VM has obtained a unique IP address successfully.
 
-I entered `ping www.google.com` to test if outbound requests from our Windows 10 Client VM and inbound responses from the internet worked successfully.
+Entered `ping www.google.com` to test if outbound requests from our Windows 10 Client VM and inbound responses from the internet worked successfully.
 
-I entered `ping mydomain.com` to test if outbound requests from our Windows 10 Client VM and inbound responses from our Windows Server 2019 / Domain Controller worked successfully.
+Entered `ping mydomain.com` to test if outbound requests from our Windows 10 Client VM and inbound responses from our Windows Server 2019 / Domain Controller worked successfully.
 
 While our Windows 10 Client VM is successfully communicating in the same internal network as our Windows Server 2019 / Domain Controller, I additionally renamed the Windows 10 Client VM's Computer Name to CLIENT1 and it's Domain to mydomain.com.
 
