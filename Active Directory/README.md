@@ -40,7 +40,7 @@
 
 Created an Active Directory Diagram in Microsoft Visio to help visualize this homelab. 
 
-The Windows Server 2019 VM functions as the Domain Controller (DC) for the internal network, providing centralized authentication, identity management, and network services. Both the Domain Controller and the Windows 10 Client VM reside on the same virtual internal network.
+The Windows Server 2019 VM functions as the Domain Controller (DC) for the internal network, providing centralized authentication, identity management, and network services. Both the Domain Controller and the Windows 10 VM / Client reside on the same virtual internal network.
 
 On the Domain Controller, several core enterprise services are configured to replicate a real-world Active Directory environment:
 
@@ -52,7 +52,7 @@ On the Domain Controller, several core enterprise services are configured to rep
 
 - NAT / Routing to provide controlled internet access to internal hosts.
 
-The Windows 10 Client VM acts as a company-owned device that relies entirely on the Domain Controller for network connectivity, authentication, and configuration. This mirrors how enterprise systems operate within a centralized domain environment. 
+The Windows 10 VM / Client acts as a company-owned device that relies entirely on the Domain Controller for network connectivity, authentication, and configuration. This mirrors how enterprise systems operate within a centralized domain environment. 
 
 The Domain Controller also handles user and computer account creation, management, and distribution across the domain, ensuring that all domain-joined devices use the same centrally enforced identities, permissions, and policies.
 
@@ -60,14 +60,14 @@ The Domain Controller also handles user and computer account creation, managemen
 
 **1. Oracle VirtualBox: Windows Server 2019 VM Configuration**
 
-I created and configured my Windows Server 2019 VM to have two different adapters. Adapter 1 has NAT for internet access and Adapter 2 has an Internal Network for the Windows 10 Client VM.
+I created and configured my Windows Server 2019 VM to have two different adapters. Adapter 1 has NAT for internet access and Adapter 2 has an Internal Network for the Windows 10 VM / Client.
 
 <img width="761" height="469" alt="1" src="https://github.com/user-attachments/assets/90fa2d58-9d5b-4cd6-b7f2-06180bc3adae" />
 <img width="758" height="467" alt="1 1" src="https://github.com/user-attachments/assets/c1eec9bb-8384-48b4-b30b-b936a86127d3" />
 
 ***
 
-**2. Windows Server 2019 VM: Manual Networking Configuration**
+**2. Windows Server 2019 VM / Domain Controller: Manual Networking Configuration**
 
 I renamed Adapter 1 (NAT) to INTERNET and Adapter 2 (Internal Network) to X_Internal_X. Assigned Adapter 2 (Internal Network) its own unique IP address, Subnet mask, and Preferred DNS server.
 
@@ -75,7 +75,7 @@ I renamed Adapter 1 (NAT) to INTERNET and Adapter 2 (Internal Network) to X_Inte
 
 ***
 
-**3. Windows Server 2019 VM: Domain Controller Necessities Installation**
+**3. Windows Server 2019 VM / Domain Controller: Domain Controller Necessities Installation**
 
 I opened Server Manager and proceeded to install Active Directory Domain Services, DHCP Server, DNS Server, and Remote Access. I additionally installed .NET Framework 3.5 and 4.7 in the Features section to ensure compatibility.
 
@@ -83,7 +83,7 @@ I opened Server Manager and proceeded to install Active Directory Domain Service
 
 ***
 
-**4. Windows Server 2019 VM: Configuring the VM as the Domain Controller (DC)**
+**4. Windows Server 2019 VM / Domain Controller: Configuring the VM as the Domain Controller**
 
 After all installations were completed, I promoted the server to the Domain Controller, set the root domain name to mydomain.com, and created its password. Restarted the VM.
 
@@ -91,7 +91,7 @@ After all installations were completed, I promoted the server to the Domain Cont
 
 ***
 
-**5. Windows Server 2019 VM: Organizational Unit and Admin User Account Creation**
+**5. Windows Server 2019 VM / Domain Controller: Organizational Unit and Admin User Account Creation**
 
 I logged back in as the newly installed Domain Controller administrator account to create a new Organizational Unit called _ADMINS and create my own specific administrator user account.
 
@@ -103,7 +103,7 @@ I logged back in as the newly installed Domain Controller administrator account 
 
 ***
 
-**6. Windows Server 2019 VM: Configuring Routing and Remote Access (RRAS)**
+**6. Windows Server 2019 VM / Domain Controller: Configuring Routing and Remote Access (RRAS)**
 
 I configured RRAS to allow devices in the internal network to connect to the internet through the Windows Server 2019 VM/our Domain Controller.
 
@@ -115,19 +115,19 @@ However, because our homelab setup looks like this:
 
 Internet
      -->
-   Host PC
+Host PC
      -->
- VirtualBox NAT (for Windows Server 2019 / DC only)
+VirtualBox NAT (for Windows Server 2019 / Domain Controller only)
      -->
-DC/Server 2019 VM (NAT + Internal Network)
+Windows Server 2019 / Domain Controller (NAT + Internal Network)
      -->
 Internal Network (isolated)
      -->
-Windows 10 Client VM
+Windows 10 VM / Client
 
 And because I did not configure port forwarding:
-- Outbound traffic from our Windows Server 2019 VM / Domain Controller and Windows 10 Client VM is allowed.
-- Only inbound **response** traffic (for requests the Windows Server 2019 VM / Domain Controller and Windows 10 Client VM initiated) is allowed.
+- Outbound traffic from our Windows Server 2019 VM / Domain Controller and Windows 10 VM / Client is allowed.
+- Only inbound **response** traffic (for requests the Windows Server 2019 VM / Domain Controller and Windows 10 VM / Client initiated) is allowed.
 
 Thus, for the purposes of this homelab demonstration this setup is acceptable. The goal here is strictly to showcase and understand how internal clients can route traffic through a Windows Server acting as both a domain controller and a router/NAT device.
 
@@ -140,7 +140,7 @@ Thus, for the purposes of this homelab demonstration this setup is acceptable. T
 
 ***
 
-**7. Windows Server 2019 VM: Configuring Dynamic Host Configuration Protocol (DHCP)**
+**7. Windows Server 2019 VM / Domain Controller: Configuring Dynamic Host Configuration Protocol (DHCP)**
 
 I configured DHCP following the values in the Active Directory Diagram to allow devices in the internal network to automatically be assigned their own IP address when connecting to the internet through the Windows Server 2019 VM/our Domain Controller.
 
@@ -158,7 +158,7 @@ I configured DHCP following the values in the Active Directory Diagram to allow 
 
 ***
 
-**8. Windows Server 2019 VM: Deploying Example User List and PowerShell Automation Script**
+**8. Windows Server 2019 VM / Domain Controller: Deploying Example User List and PowerShell Automation Script**
 
 I downloaded an example list of 100s of users called names.txt and the PowerShell automation script called 1_CREATE_USERS to automate the user account creation process from https://github.com/joshmadakor1/AD_PS. Added my name to the top of the list in names.txt to create a non-admin user account for myself. Opened PowerShell as Administrator and ran the PowerShell automation script directly in PowerShell.
 
@@ -232,23 +232,23 @@ I verified the creation of all the user accounts in the Active Directory and add
 
 **10. Oracle VirtualBox: Windows 10 Client VM Configuration** 
 
-I created and configured my Windows 10 Client VM to only use an Internal Network for Adapter 1, isolating it so it can initially communicate only with other machines within the same internal network.
+I created and configured my Windows 10 VM / Client to only use an Internal Network for Adapter 1, isolating it so it can initially communicate only with other machines within the same internal network.
 
 <img width="766" height="474" alt="10" src="https://github.com/user-attachments/assets/facd61bc-2c29-45c9-b4b7-bd70c60e5d08" />
 
 ***
 
-**11. Windows 10 Client VM: DHCP, Outbound, and Inbound Response Verification**
+**11. Windows 10 VM / Client: DHCP, Outbound, and Inbound Response Verification**
 
-When I created the Windows 10 Client VM and configured its adapter to Internal Network, it entered the same Internal Network as our Windows 2019 Server VM / Domain Controller. Since I installed and configured Active Directory Domain Services, DHCP Server, DNS Server, and Remote Access, our Windows 10 Client VM was able to automatically reach out to our Windows 2019 Server VM to request and obtain a unique IP address.
+When I created the Windows 10 VM / Client and configured its adapter to Internal Network, it entered the same Internal Network as our Windows 2019 Server VM / Domain Controller. Since I installed and configured Active Directory Domain Services, DHCP Server, DNS Server, and Remote Access, our Windows 10 VM / Client was able to automatically reach out to our Windows 2019 Server VM to request and obtain a unique IP address.
 
-Entered `ipconfig` to verify that our Windows 10 Client VM has obtained a unique IP address successfully.
+Entered `ipconfig` to verify that our Windows 10 VM / Client has obtained a unique IP address successfully.
 
-Entered `ping www.google.com` to test if outbound requests from our Windows 10 Client VM and inbound responses from the internet worked successfully.
+Entered `ping www.google.com` to test if outbound requests from our Windows 10 VM / Client and inbound responses from the internet worked successfully.
 
-Entered `ping mydomain.com` to test if outbound requests from our Windows 10 Client VM and inbound responses from our Windows Server 2019 / Domain Controller worked successfully.
+Entered `ping mydomain.com` to test if outbound requests from our Windows 10 VM / Client and inbound responses from our Windows Server 2019 / Domain Controller worked successfully.
 
-While our Windows 10 Client VM is successfully communicating in the same internal network as our Windows Server 2019 / Domain Controller, I additionally renamed the Windows 10 Client VM's Computer Name to CLIENT1 and it's Domain to mydomain.com.
+While our Windows 10 VM / Client is successfully communicating in the same internal network as our Windows Server 2019 / Domain Controller, I additionally renamed the Windows 10 VM / Client's Computer Name to CLIENT1 and it's Domain to mydomain.com.
 
 <img width="1022" height="766" alt="11" src="https://github.com/user-attachments/assets/ece99f79-6934-492d-aa94-c27e41dcc7ba" />
 <img width="1022" height="767" alt="11 1" src="https://github.com/user-attachments/assets/19d76e94-6ff4-4154-85d2-c4698eb4cbe3" />
@@ -257,7 +257,7 @@ While our Windows 10 Client VM is successfully communicating in the same interna
 
 ***
 
-**12. Windows Server 2019 VM: CLIENT1.mydomain.com Verification**
+**12. Windows Server 2019 VM / Domain Controller: CLIENT1.mydomain.com Verification**
 
 I verified from the Domain Controller side that DHCP was working and the Windows 10 Client VM is listed as a device in the Active Directory with the correct values I configured (172.16.0.100-200) as shown in the Active Directory Diagram.
 
@@ -266,7 +266,7 @@ I verified from the Domain Controller side that DHCP was working and the Windows
 
 ***
 
-**13. Windows 10 Client VM: Logging in With Provisioned Active Directory Accounts**
+**13. Windows 10 VM / Client: Logging in With Provisioned Active Directory Accounts**
 
 I can now simulate logging in as a newly onboarded employee (Their name was included in the names.txt list, and their account was automatically created using the PowerShell provisioning script on the Domain Controller). From the Windows 10 client VM, I can now log in as that user on a company-owned device just as it would occur during a real onboarding process.
 
