@@ -56,6 +56,30 @@ The Windows 10 VM / Client acts as a company-owned device that relies entirely o
 
 The Domain Controller also handles user and computer account creation, management, and distribution across the domain, ensuring that all domain-joined devices use the same centrally enforced identities, permissions, and policies.
 
+#### Important Note for Routing and Remote Access (RRAS) on a Domain Controller
+
+Configuring RRAS on a Domain Controller to route internal network traffic to the Internet is not recommended in real-world or production environments. Domain Controllers are security-critical systems, and exposing them to routing functions increases the attack surface, complicates hardening, and violates best-practice network design. Ideally, a dedicated router/firewall VM would act as the gateway for the Windows 10 Client VM to access the Internet.
+
+However, because our homelab setup looks like this:
+
+Internet
+     -->
+Host PC
+     -->
+VirtualBox NAT (for Windows Server 2019 / Domain Controller only)
+     -->
+Windows Server 2019 / Domain Controller (NAT + Internal Network)
+     -->
+Internal Network (isolated)
+     -->
+Windows 10 VM / Client
+
+And because I did not configure port forwarding:
+- Outbound traffic from our Windows Server 2019 VM / Domain Controller and Windows 10 VM / Client is allowed.
+- Only inbound **response** traffic (for requests the Windows Server 2019 VM / Domain Controller and Windows 10 VM / Client initiated) is allowed.
+
+Thus, for the purposes of this homelab demonstration this setup is acceptable. The goal here is strictly to showcase and understand how internal clients can route traffic through a Windows Server acting as both a domain controller and a router/NAT device.
+
 ***
 
 **1. Oracle VirtualBox: Windows Server 2019 VM Configuration**
@@ -106,30 +130,6 @@ I logged back in as the newly installed Domain Controller administrator account 
 **6. Windows Server 2019 VM / Domain Controller: Configuring Routing and Remote Access (RRAS)**
 
 I configured RRAS to allow devices in the internal network to connect to the internet through the Windows Server 2019 VM/our Domain Controller.
-
-##### Important Note for RRAS on a Domain Controller
-
-Configuring RRAS on a Domain Controller to route internal network traffic to the Internet is not recommended in real-world or production environments. Domain Controllers are security-critical systems, and exposing them to routing functions increases the attack surface, complicates hardening, and violates best-practice network design. Ideally, a dedicated router/firewall VM would act as the gateway for the Windows 10 Client VM to access the Internet.
-
-However, because our homelab setup looks like this:
-
-Internet
-     -->
-Host PC
-     -->
-VirtualBox NAT (for Windows Server 2019 / Domain Controller only)
-     -->
-Windows Server 2019 / Domain Controller (NAT + Internal Network)
-     -->
-Internal Network (isolated)
-     -->
-Windows 10 VM / Client
-
-And because I did not configure port forwarding:
-- Outbound traffic from our Windows Server 2019 VM / Domain Controller and Windows 10 VM / Client is allowed.
-- Only inbound **response** traffic (for requests the Windows Server 2019 VM / Domain Controller and Windows 10 VM / Client initiated) is allowed.
-
-Thus, for the purposes of this homelab demonstration this setup is acceptable. The goal here is strictly to showcase and understand how internal clients can route traffic through a Windows Server acting as both a domain controller and a router/NAT device.
 
 <img width="1023" height="711" alt="6 1 1" src="https://github.com/user-attachments/assets/2285446f-b7ba-4134-9e3f-f11a39020f93" />
 <img width="434" height="309" alt="6" src="https://github.com/user-attachments/assets/637cbf7b-8b10-4d43-957e-fe85db08de13" /><br>
