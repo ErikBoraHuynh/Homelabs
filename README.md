@@ -34,7 +34,7 @@ This repository will cover a range of cybersecurity topics, including:
 Some tools I will be using and documenting in my labs include:
 
 - **VirtualBox**
-- **Ubuntu**, **Kali Linux**, **Windows**
+- **Windows**, **Linux**, **Ubuntu**, **Kali Linux**
 - **Wazuh**, **Microsoft Sentinel**
 - **Wireshark**, **Nmap**, **Metasploit**
 - **Splunk**, **Sysmon**
