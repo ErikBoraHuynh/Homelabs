@@ -1,5 +1,7 @@
 # Homelabs
 
+Welcome to my Homelabs repository where I document completed and ongoing homelabs with the goal of strengthening my technical skills through hands-on practical experience.
+
 ## Purpose
 
 The goal of this repository is to:
