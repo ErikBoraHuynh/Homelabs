@@ -99,7 +99,7 @@ Entered `python3 -m http.server 9999` in a separate command terminal to create a
 
 I disabled Windows Defender's Real-Time protection to be able to download the Trojan file for homelab demonstration.
 
-Downloaded and executed the Trojan file (In a real-world scenario, malware distribution is far less obvious—this simplified version is only for controlled lab testing.).
+Downloaded and executed the Trojan file (In a real-world scenario, malware distribution is far less obvious. This simplified version is only for controlled lab testing.).
 
 <img width="1023" height="768" alt="4" src="https://github.com/user-attachments/assets/b4f6d1d1-a5dd-476b-a0d9-123240f4c90d" />
 <img width="1041" height="837" alt="4 1" src="https://github.com/user-attachments/assets/3cf41837-f49e-45b7-b072-d63635180673" />
