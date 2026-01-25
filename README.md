@@ -20,12 +20,12 @@ This repository will cover a range of cybersecurity topics, including:
 
 | Category | Description |
 |-----------|-------------|
-| **System Setup** | Installing and configuring virtual machines, networks, and security tools |
-| **Monitoring & Detection** | Using SIEMs like Wazuh and Microsoft Sentinel to monitor events and alerts |
-| **Defensive Security** | Implementing firewalls, endpoint protection, and log analysis |
-| **Offensive Security** | Practicing ethical hacking, vulnerability exploitation, and penetration testing techniques |
-| **Identity & Access Management** | Testing authentication, authorization, and privilege escalation controls |
-| **Cloud Security** | Exploring Azure, AWS, and hybrid configurations for secure cloud architectures |
+| **System Setup** | Installing and configuring virtual machines, networks, and security tools. |
+| **Monitoring & Detection** | Using SIEMs like Wazuh and Microsoft Sentinel to monitor events and alerts. |
+| **Defensive Security** | Implementing firewalls, endpoint protection, and log analysis. |
+| **Offensive Security** | Practicing ethical hacking, vulnerability exploitation, and penetration testing techniques. |
+| **Identity & Access Management** | Testing authentication, authorization, and privilege escalation controls. |
+| **Cloud Security** | Exploring Azure, AWS, and hybrid configurations for secure cloud architectures. |
 
 ---
 
