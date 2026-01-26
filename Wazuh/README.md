@@ -1,4 +1,4 @@
-# Wazuh Homelab
+# Wazuh Home lab
 
 ## Objective
 
@@ -34,7 +34,7 @@
 
 - **Log metadata provided valuable context**, such as file paths, event types, and timestamps—similar to what security analysts review during investigations.
 
-- **Wazuh can serve as an effective SIEM for endpoint monitoring**, especially for small environments or homelabs aiming to understand detection mechanics.
+- **Wazuh can serve as an effective SIEM for endpoint monitoring**, especially for small environments or home labs aiming to understand detection mechanics.
 
 ***
 
