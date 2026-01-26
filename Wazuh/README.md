@@ -1,4 +1,4 @@
-# Wazuh Home lab
+# Wazuh Home Lab
 
 ## Objective
 
