@@ -55,3 +55,14 @@ Our goal here is to quickly identify details such as the name of the drive or th
 
 <img width="1920" height="921" alt="Forensics 4" src="https://github.com/user-attachments/assets/ffbb3cb8-23eb-4fdc-a91c-e1c5689f2173" />
 
+***
+
+**Conclusion**
+
+This lab highlighted that the first step in any investigation isn't looking at files, but protecting the data. Proving that the usb.dd.001 image matched the GitHub source hash was an important integrity check. It was also interesting to see how much metadata such as the Volume Label is visible through a simple strings command before even mounting the image. This "look but don't touch" approach is the cornerstone of maintaining evidence integrity.
+
+***
+
+# Lab 02: Strategic Acquisition
+
+**1. placeholder**
