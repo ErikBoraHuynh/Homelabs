@@ -1,4 +1,4 @@
-# Forensics Homelab
+# Forensics Homelabs
 
 ## Objective
 
@@ -23,7 +23,7 @@
 -
 -
 
-## Findings
+# Lab 01: Evidence Intake & Integrity
 
 **1. Acquisition of the Evidence**
 
@@ -43,7 +43,7 @@ Entered `7z x usb_dd.7z` to extract the files from our downloaded "usb_dd.7z" ar
 
 **3. Ensuring the Evidence's Integrity**
 
-Entered `md5sum usb.dd.001` to calculate the MD5 hash of the disk image to prove that the data has not been altered since the moment we acquired it. We ensure that the hash shown below matches the hash in the original file on GitHub.
+Entered `md5sum usb.dd.001` to calculate the MD5 hash of the disk image to prove that the data has not been altered since the moment we acquired it. We ensure that the hash shown below matches the hash in the original file on GitHub: "0adce985af5dd1e0d3595a50a5a9a427" which it does.
 
 <img width="1920" height="920" alt="Forensics 3" src="https://github.com/user-attachments/assets/c7d8d9d2-8c39-46cf-a412-281089619df8" />
 
