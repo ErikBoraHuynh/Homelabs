@@ -1,4 +1,4 @@
-# Lab 06: Replaying the Security Tape
+# $UsnJrnl: Replaying the Security Tape
 
 ## Objective
 
