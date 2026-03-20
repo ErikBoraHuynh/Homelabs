@@ -22,25 +22,40 @@
 
 **Phase 0: Environment & Evidence Setup**
 
-text
+Entered `mkdir -p evidencevault && cd evidencevault` to create and enter the vault directory for this home lab.
 
-img
+Entered `wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1wYYKasdmBShQ4TtYahZWmHLdByyJyDDu' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1wYYKasdmBShQ4TtYahZWmHLdByyJyDDu" -O evidence.E01` to download the evidence.E01 file into the vault.
+
+Entered `md5sum evidence.E01` to verify the integrity of our downloaded evidence.E01 file.
+
+<img width="1920" height="918" alt="USN 1" src="https://github.com/user-attachments/assets/04ec15da-6439-47ad-864d-ea15c29d71d3" />
 
 ***
 
 **Phase 1: Autopsy Case Initialization**
 
-text
+Entered `sudo autopsy &` to launch the forensic browser Autospy and load our case.
 
-img
+<img width="1920" height="918" alt="USN 2" src="https://github.com/user-attachments/assets/46d51d06-8034-4889-b629-f2187a7bf53b" />
+<img width="1920" height="919" alt="USN 3" src="https://github.com/user-attachments/assets/49b3044c-c641-49e8-ab3c-05c66e6d8fc6" />
+<img width="1920" height="919" alt="USN 4" src="https://github.com/user-attachments/assets/6d290f29-c28d-4b3d-9179-2c60f16e843c" />
+<img width="1920" height="919" alt="USN 5" src="https://github.com/user-attachments/assets/bf8ca8e1-d94b-447e-bb7d-585d5fd362f5" />
+<img width="1920" height="917" alt="USN 6" src="https://github.com/user-attachments/assets/35867d21-b497-4edf-a5cd-231a7a6e650e" />
+<img width="1920" height="919" alt="USN 7" src="https://github.com/user-attachments/assets/328be7a3-cec0-4755-8fea-24e5b890aa20" />
+<img width="1920" height="918" alt="USN 8" src="https://github.com/user-attachments/assets/42300edf-6e9b-4dff-959c-672cfb27c831" />
+<img width="1920" height="918" alt="USN 9" src="https://github.com/user-attachments/assets/c49ddf61-b376-43c8-b13c-40acc0ec210e" />
+<img width="1920" height="919" alt="USN 10" src="https://github.com/user-attachments/assets/4443276e-c858-4fd0-b0f9-ed4efbb6fb96" />
 
 ***
 
 **Phase 2: Extracting the $J Stream**
 
-text
+After clicking Analyze, 
 
-img
+<img width="1920" height="920" alt="USN 11" src="https://github.com/user-attachments/assets/2ef30093-437a-4d4e-8bf0-8c622e29eac2" />
+<img width="1920" height="919" alt="USN 12" src="https://github.com/user-attachments/assets/e0d62ee3-1f27-4186-a9d4-de5ad1913570" />
+<img width="1920" height="920" alt="USN 13" src="https://github.com/user-attachments/assets/93f13573-b7e5-4045-b46e-7316a83fdb5d" />
+
 
 ***
 
@@ -48,14 +63,18 @@ img
 
 text
 
-img
+<img width="1920" height="920" alt="USN 14" src="https://github.com/user-attachments/assets/3d2f08f7-da62-4b83-982d-cada4ff8abb8" />
+<img width="1920" height="919" alt="USN 15" src="https://github.com/user-attachments/assets/ea93152d-423c-487c-8e01-00f2dbc79d4e" />
+
 
 ***
 
 **Phase 4: Connecting the Barcodes**
 
-text
+Here we Ctrl-F to find the "surveil-sourhside06.JPG" file that a suspect claimed they had never seen before. We find it's File Reference Number 6017 and we Ctrl-F it as well to see all it's logs. We find that at it was renamed "billing1.ods" at the Unix Epoch Timestamp of 1665596185. We enter `date -d @1665596185` to get the exact timestamp (UTC) of when it was renamed, which is Wed Oct 12 17:36:25 UTC 2022.
 
-img
+<img width="1920" height="918" alt="USN 16" src="https://github.com/user-attachments/assets/5593f3ee-5360-4fd4-9abb-27ef241a5c0b" />
+<img width="1920" height="920" alt="USN 17" src="https://github.com/user-attachments/assets/f470f520-f900-494b-9502-6622dbd2c9fb" />
+<img width="1920" height="920" alt="USN 18" src="https://github.com/user-attachments/assets/c15105d3-a4dd-4f3a-9848-0ff6641ab7da" />
 
 ***
