@@ -2,9 +2,10 @@
 
 ## Objective
 
-- 
+- **Forensic Reconstruction:** Utilized the $UsnJrnl within a SANS SIFT environment to track the lifecycle of a file, identifying that a sensitive image (.JPG) was renamed to a benign spreadsheet (.ods) to evade detection.
 
-- 
+- **Metadata Validation:** Proved file continuity by matching the immutable File Reference Number (File ID), demonstrating how low-level NTFS artifacts serve as a forensic "barcode" that remains unchanged regardless of user-facing filename modifications.
+
 
 ### Skills Learned
 
